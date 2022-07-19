@@ -1,4 +1,4 @@
-# Desktop-specification
+# Desktop specification
 
 As mentioned before, the desktop structure is the following:
 
@@ -17,13 +17,13 @@ simple
 
 Here are located all scripts that are executed after applying a theme and the extra is actived. If you need parameters, the name should match the one that appears in the theme toml (extras secion). They are bash scripts, completely unrestricted (the user who will execut them won't be root)
 
-See examples [vscode extra script](../github/)
+See examples [vscode extra script](github/)
 
 Dont forget to give themes execution permissions.
 
 #### Patterns
 
-Complex file, link to [Pattern Specification](desktop-specification.md)
+Complex file, link to [Pattern Specification](Desktop-specification.md)
 
 #### Post-Scripts
 

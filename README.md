@@ -1,37 +1,43 @@
-# Autocompletions
+# Getting started
 
-As an (ugly) patch, in order to make the autocompletions update every time a desktop or a theme is added/removed, we are constantly regenerating them. This causes that we must have write access in the directory where we are saving those autocompletion scripts.
+### Applying your first desktop
 
-The steps that you have to follow depend on the shell you are currently using.
+{% hint style="danger" %}
+**IMPORTANT:** Through this process, you will end up overwriting your current configuration files under `~/.config` with the desktop specific ones.
 
-{% hint style="info" %}
-Test
+Please, backup your files **** before continuing!
 {% endhint %}
 
-### Zsh
+#### Desktop resources
 
-If you are using [zsh](https://www.zsh.org/), you need to add the following line to your `.zshrc`:
+To see information about all available desktops and **detailed installation instructions** go to [Gtheme-Desktops →](https://github.com/daavidrgz/gtheme-desktops).
 
-```
-fpath=(/home/{your-user}/.gtheme/completions $fpath)
-```
+In this example, we are going to install the [Simple → ](https://github.com/daavidrgz/gtheme-desktops/tree/bec9b141809b97d0b8ab52ec0b521dd17a4e2463/simple)desktop. In that link you can find all desktop dependencies and a copy and paste experience for those who are using Arch Linux.
 
-Important: This line should be placed **BEFORE** the call to `compinit`, usually something like this:
+#### Apply the desktop
 
-```
-autoload -Uz compinit && compinit
-```
+After the dependency installation process, it's time to apply the desktop using gtheme. There are two approaches:
 
-If you don't have this line, add it **AFTER** the fpath export.
+* Using the CLI **->** `$ gtheme desktop apply simple`
+* Using the TUI **->** Run `gtheme` without arguments, move to _simple_ desktop and press `enter`
 
-### Bash
+{% hint style="warning" %}
+Please, if your are installing your first desktop, you need to reboot your computer after applying it.
+{% endhint %}
 
-If you are using [bash](https://www.gnu.org/software/bash/), you only need to add this to your `.bashrc`:
+{% hint style="info" %}
+Keep in mind that you must select the Desktop Environment (in our example case is bspwm) in your Display Manager (a.k.a. login screen).
+{% endhint %}
 
-```bash
-[ -r /home/{your-user}/.gtheme/completions/gtheme.bash ] && source /home/{your-user}/.gtheme/completions/gtheme.bash
-```
+### Applying your first theme
 
-### Fish
+At this point, **you should have had installed a desktop** (otherwise it will presumably not work).
 
-If you are using [fish](https://github.com/fish-shell/fish-shell), it already includes an user level write access directory to store the completion scripts, so you don't need to do anything.
+As well as before, there are two different methods to apply a theme:
+
+* Using the CLI **->** `$ gtheme theme apply {theme}`
+* Using the TUI **->** Run `gtheme` and press `tab` to switch to the _fav-themes/themes_ view. Search for the theme you want to apply and hit `enter`
+
+{% hint style="info" %}
+Some applications should now restart and apply the selected theme's colors. Nevertheless, there are some apps that either do not support _hot reload color change_ or need a manual restart.
+{% endhint %}

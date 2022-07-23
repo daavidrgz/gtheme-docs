@@ -16,24 +16,24 @@ In this example, we are going to install the [Simple → ](https://github.com/da
 
 #### Apply the desktop
 
-After the dependency installation process, it's time to apply the desktop using gtheme. There are two approaches:
+After the dependency installation process, it's time to apply the desktop by using gtheme. There are two approaches:
 
 * Using the CLI **->** `$ gtheme desktop apply simple`
 * Using the TUI **->** Run `gtheme` without arguments, move to _simple_ desktop and press `enter`
 
 {% hint style="warning" %}
-Please, if your are installing your first desktop, you need to reboot your computer after applying it.
+If your are installing your first desktop, you will need to reboot your computer after applying it.
 {% endhint %}
 
 {% hint style="info" %}
-Keep in mind that you must select the Desktop Environment (in our example case is bspwm) in your Display Manager (a.k.a. login screen).
+Keep in mind that you must select the Desktop Environment (in our example is bspwm) in your Display Manager (aka login screen).
 {% endhint %}
 
 ### Applying your first theme
 
-At this point, **you should have had installed a desktop** (otherwise it will presumably not work).
+At this point, **you should have a desktop installed** (otherwise it will presumably not work).
 
-As well as before, there are two different methods to apply a theme:
+As we mentioned before, there are two different methods for applying a theme:
 
 * Using the CLI **->** `$ gtheme theme apply {theme}`
 * Using the TUI **->** Run `gtheme` and press `tab` to switch to the _fav-themes/themes_ view. Search for the theme you want to apply and hit `enter`

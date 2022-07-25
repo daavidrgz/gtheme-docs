@@ -33,7 +33,7 @@ The names of the script files should match the pattern names!!
 
 They recive as first parameter the output-file path specified in the pattern.
 
-There is a special script called `desktop-exit.sh` that is executed every time you change from one desktop to another one. It let us abstract the current Window Manager that is being used.
+There is a special script called `desktop-exit.sh` that is executed every time you change from one desktop to another one. It let us be agnostic of the current Window Manager that is being used and experiment a better experience when switching desktops.
 
 ### .config folder
 

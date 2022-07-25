@@ -14,8 +14,10 @@ Here are some examples:
 * `gtheme desktop apply <desktop>`: will apply the specified desktop and copy desktop's dotfiles to your `~/.config` folder.
 * `gtheme theme apply <theme>`: will apply the specified theme for the current desktop.
 
-### **Text User Interface (T**UI)
+### **Text User Interface (TUI)**
 
 * If you prefer a Text UI rather than a CLI, execute `gtheme` without any arguments.
 * In order to see Text UI help and all included functionalities, press `h`.
 * To navigate between _desktops/patterns_ view to _fav-themes/themes_ **** view, press `tab`.
+* To interact with the selected item, press `enter`
+* To quit, it is better to press `q` before closing terminal window, in order to avoid any bug.

@@ -52,4 +52,4 @@ Hex colors only
 
 Important to prescind of the '#'
 
-You can also add custom colors¿, but is not recommended.
+If the property is defined in the theme that you want to apply, you can reference it in the patterns. It means that you can create custom properties if you want (keep in mind that the rest of the themes should also need to have this custom property set in order to be consistent). We **encourage to not use custom color properties** on theme files, since we don't find this neccesary at all.

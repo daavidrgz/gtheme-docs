@@ -2,7 +2,7 @@
 
 As well as we had seen in the previous section, you can interact with gtheme via two different approaches:
 
-### **Command Line Interface (CLI)**
+## **Command Line Interface (CLI)**
 
 You can see gtheme's help with `gtheme --help` and `gtheme <subcommand> --help`
 
@@ -14,7 +14,7 @@ Here are some examples:
 * `gtheme desktop apply <desktop>`: will apply the specified desktop and copy desktop's dotfiles to your `~/.config` folder.
 * `gtheme theme apply <theme>`: will apply the specified theme for the current desktop.
 
-### **Text User Interface (TUI)**
+## **Text User Interface (TUI)**
 
 * If you prefer a Text UI rather than a CLI, execute `gtheme` without any arguments.
 * In order to see Text UI help and all included functionalities, press `h`.

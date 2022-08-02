@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Theme specification - Gtheme</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">User Guide</li><li class="chapter-item expanded "><a href="../user_guide/installation.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../user_guide/getting_started.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li class="chapter-item expanded "><a href="../user_guide/general_usage.html"><strong aria-hidden="true">3.</strong> General usage</a></li><li class="chapter-item expanded affix "><li class="part-title">Folder Structure</li><li class="chapter-item expanded "><a href="../folder_structure/index.html"><strong aria-hidden="true">4.</strong> Folder structure</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../folder_structure/theme-specification.html" class="active"><strong aria-hidden="true">4.1.</strong> Theme specification</a></li><li class="chapter-item expanded "><a href="../folder_structure/desktop-specification.html"><strong aria-hidden="true">4.2.</strong> Desktop specification</a></li><li class="chapter-item expanded "><a href="../folder_structure/pattern-specification.html"><strong aria-hidden="true">4.3.</strong> Pattern specification</a></li><li class="chapter-item expanded "><a href="../folder_structure/postscript-specification.html"><strong aria-hidden="true">4.4.</strong> PostScript specification</a></li><li class="chapter-item expanded "><a href="../folder_structure/extra-specification.html"><strong aria-hidden="true">4.5.</strong> Extra specification</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Extra</li><li class="chapter-item expanded "><a href="../extra/autocompletions.html"><strong aria-hidden="true">5.</strong> Autocompletions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Gtheme</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="theme-specification"><a class="header" href="#theme-specification">Theme specification</a></h1>
+<p>Example using <a href="https://github.com/daavidrgz/gtheme-themes/blob/main/themes/Dracula.toml">Dracula</a> theme.</p>
+<pre><code class="language-toml">name = 'Dracula'
+
+[extras]
+intellij-idea = ['Dracula Colorful']
+vscode = ['Dracula']
+wallpaper = ['~/.config/gtheme/wallpapers/Dracula/arch-linux-light.png']
+
+[colors]
+background = '1e1f28'
+black = '000000'
+black-hg = '545454'
+blue = 'bd92f8'
+blue-hg = 'bd92f8'
+cursor = 'bbbbbb'
+cyan = '8ae9fc'
+cyan-hg = '8ae9fc'
+foreground = 'f8f8f2'
+green = '50fa7b'
+green-hg = '50fa7b'
+magenta = 'ff78c5'
+magenta-hg = 'ff78c5'
+red = 'ff5555'
+red-hg = 'ff5454'
+selection-background = '44475a'
+selection-foreground = '1e1f28'
+white = 'bbbbbb'
+white-hg = 'ffffff'
+yellow = 'f0fa8b'
+yellow-hg = 'f0fa8b'
+</code></pre>
+<p>You can easily create a new theme skeleton running <code>gtheme theme new-skeleton &lt;THEME_NAME&gt;</code></p>
+<h2 id="extras"><a class="header" href="#extras">Extras</a></h2>
+<p>In the extras section, there are specified all the arguments that are necessary to apply the theme in other applications.</p>
+<p>The elements of the array will be passed to the extra's post-script in the same order. To see more information about this check out the <a href="file-specifications/postscript-specification.html">PostScript specification</a>.</p>
+<p>You can also add any application you want, but obviously implementing a script that handles those arguments. This script must be stored into the <code>extras/</code> folder of a desktop.</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>WARNING:</strong> The names of the extra's script and the application specified in the extras section of a theme must be the same!</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<h2 id="colors"><a class="header" href="#colors">Colors</a></h2>
+<p>In the theme specification, you must use <strong>valid hex colors only</strong>. It is important no not prefix the hex color with <code>#</code>.</p>
+<p>If the property is defined in the theme that you want to apply, you can reference it in the patterns. It means that you can create custom properties on theme's colors definition keep in mind that the rest of the themes should also need to have this custom property set in order to be consistent). We <strong>encourage to not use custom color properties</strong> on theme files, since we don't find this neccesary at all, and it will ruin the standarization we're trying to accomplish.</p>
+<p>However, if you need to use more than 16 colors in your theme, creating new color properties
+is the only way.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../folder_structure/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../folder_structure/desktop-specification.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../folder_structure/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../folder_structure/desktop-specification.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

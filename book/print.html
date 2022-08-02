@@ -1,0 +1,461 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Gtheme</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">User Guide</li><li class="chapter-item expanded "><a href="user_guide/installation.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="user_guide/getting_started.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li class="chapter-item expanded "><a href="user_guide/general_usage.html"><strong aria-hidden="true">3.</strong> General usage</a></li><li class="chapter-item expanded affix "><li class="part-title">Folder Structure</li><li class="chapter-item expanded "><a href="folder_structure/index.html"><strong aria-hidden="true">4.</strong> Folder structure</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="folder_structure/theme-specification.html"><strong aria-hidden="true">4.1.</strong> Theme specification</a></li><li class="chapter-item expanded "><a href="folder_structure/desktop-specification.html"><strong aria-hidden="true">4.2.</strong> Desktop specification</a></li><li class="chapter-item expanded "><a href="folder_structure/pattern-specification.html"><strong aria-hidden="true">4.3.</strong> Pattern specification</a></li><li class="chapter-item expanded "><a href="folder_structure/postscript-specification.html"><strong aria-hidden="true">4.4.</strong> PostScript specification</a></li><li class="chapter-item expanded "><a href="folder_structure/extra-specification.html"><strong aria-hidden="true">4.5.</strong> Extra specification</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Extra</li><li class="chapter-item expanded "><a href="extra/autocompletions.html"><strong aria-hidden="true">5.</strong> Autocompletions</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Gtheme</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="gtheme"><a class="header" href="#gtheme">Gtheme</a></h1>
+<p>Gtheme is <strong>dotfile and global theme manager</strong> for linux, written completely in Rust.</p>
+<p>Its main goal is to <strong>standarize and abstract from hardware specific dotfile configurations</strong> and let you change your desktop colors with <strong>+350 different</strong> themes and wallpapers.</p>
+<p>You can write some patterns with generic attributes, and the Gtheme will fill those values with the appropiate ones following the selected theme/settings</p>
+<p>The final result you get is that you can change between any desktop of your choice with a <strong>single command</strong>, and also change the theme of all applications on a <strong>centralized and automatized way</strong>. Moreover, you can also install desktops from other people who had <strong>already adapted their dotfiles to Gtheme</strong> and everything will work just fine, you won't have any issues again when installing others' dotfiles.</p>
+<p>To sum up, you can try your favourite <a href="https://www.reddit.com/r/unixporn/">Unixporn</a> ricings (if authors port them to Gtheme before) with a plug'n play experience.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<p>You only need to clone Gtheme's repository, run the installation script and follow the initial setup</p>
+<pre><code class="language-console">git clone --depth 1 https://github.com/daavidrgz/gtheme.git gtheme 
+cd gtheme
+./install.sh
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting started</a></h1>
+<h2 id="applying-your-first-desktop"><a class="header" href="#applying-your-first-desktop">Applying your first desktop</a></h2>
+<div class="table-wrapper"><table><thead><tr><th><strong>WARNING:</strong> Through this process, you will end up overwriting your current configuration files under <code>~/.config</code> with the desktop specific ones. Please, backup your files before continuing!</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<h3 id="desktop-resources"><a class="header" href="#desktop-resources">Desktop resources</a></h3>
+<p>To see information about all available desktops and <strong>detailed installation instructions</strong> go to <a href="https://github.com/daavidrgz/gtheme-desktops">Gtheme-Desktops</a>.</p>
+<p>In this example, we are going to install the <a href="https://github.com/daavidrgz/gtheme-desktops/tree/bec9b141809b97d0b8ab52ec0b521dd17a4e2463/simple">Simple</a> desktop. In that link you can find all desktop dependencies and a copy and paste experience for those who are using Arch Linux.</p>
+<h3 id="apply-the-desktop"><a class="header" href="#apply-the-desktop">Apply the desktop</a></h3>
+<p>After the dependency installation process, it's time to apply the desktop by using gtheme. There are two approaches:</p>
+<ul>
+<li>Using the CLI <strong>-&gt;</strong> Run <code>gtheme desktop apply simple</code></li>
+<li>Using the TUI <strong>-&gt;</strong> Run <code>gtheme</code> without arguments, move to <em>simple</em> desktop and press <code>enter</code></li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th><strong>WARNING:</strong> If your are installing your first desktop, you will need to reboot your computer after applying it.</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p></p>
+<div class="table-wrapper"><table><thead><tr><th><strong>INFO:</strong> Keep in mind that you must select the Desktop Environment (in our example is bspwm) in your Display Manager (a.k.a. login screen).</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<h2 id="applying-your-first-theme"><a class="header" href="#applying-your-first-theme">Applying your first theme</a></h2>
+<p>At this point, <strong>you should have a desktop installed</strong> (otherwise it will presumably not work).</p>
+<p>As we mentioned before, there are two different methods for applying a theme:</p>
+<ul>
+<li>Using the CLI <strong>-&gt;</strong> Run <code>gtheme theme apply {theme}</code></li>
+<li>Using the TUI <strong>-&gt;</strong> Run <code>gtheme</code> and press <code>tab</code> to switch to the <em>fav-themes/themes</em> view. Search for the theme you want to apply and hit <code>enter</code></li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th><strong>INFO:</strong> Some applications should now restart and apply the selected theme's colors. Nevertheless, there are some apps that either do not support <em>hot reload color change</em> or need a manual restart (this is the main reason pattern postcripts exists)</th></tr></thead><tbody>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="general-usage"><a class="header" href="#general-usage">General usage</a></h1>
+<p>As well as we had seen in the previous section, you can interact with gtheme via two different approaches:</p>
+<h2 id="command-line-interface-cli"><a class="header" href="#command-line-interface-cli"><strong>Command Line Interface (CLI)</strong></a></h2>
+<p>You can see gtheme's help with <code>gtheme --help</code> and <code>gtheme &lt;subcommand&gt; --help</code></p>
+<p>Here are some examples:</p>
+<ul>
+<li><code>gtheme desktop list</code>: will show all desktops you've installed.</li>
+<li><code>gtheme theme list</code>: will show all themes installed.</li>
+<li><code>gtheme desktop set-default-theme &lt;theme&gt; -d &lt;desktop&gt;</code>: will set a default theme for the specified desktop.</li>
+<li><code>gtheme desktop apply &lt;desktop&gt;</code>: will apply the specified desktop and copy desktop's dotfiles to your <code>~/.config</code> folder.</li>
+<li><code>gtheme theme apply &lt;theme&gt;</code>: will apply the specified theme for the current desktop.</li>
+</ul>
+<h2 id="text-user-interface-tui"><a class="header" href="#text-user-interface-tui"><strong>Text User Interface (TUI)</strong></a></h2>
+<ul>
+<li>If you prefer a Text UI rather than a CLI, execute <code>gtheme</code> without any arguments.</li>
+<li>In order to see Text UI help and all included functionalities, press <code>h</code>.</li>
+<li>To navigate between <em>desktops/patterns</em> view to <em>fav-themes/themes</em> **** view, press <code>tab</code>.</li>
+<li>To interact with the selected item, press <code>enter</code></li>
+<li>To quit, it is better to press <code>q</code> before closing terminal window, in order to avoid any bug.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-folder-structure"><a class="header" href="#the-folder-structure">The folder structure</a></h1>
+<div class="table-wrapper"><table><thead><tr><th><strong>INFO:</strong> After the installation process, gtheme files should be placed in <code>~/.config/gtheme</code>.</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<pre><code class="language-bash">❯ tree ~/.config/gtheme
+gtheme
+├── global_config.json
+├── user_settings.toml
+├── desktops/
+├── themes/
+└── wallpapers/
+</code></pre>
+<p>Here we can see a <code>themes</code> and a <code>desktop</code> folder where all color schemes and dotfiles are stored, respectively. You may see also a <code>wallpapers</code> folder if you choose to download them.</p>
+<p>In addition, we can find two more files:</p>
+<ul>
+<li><code>global_config.json</code>, that is an internal gtheme configuration file and <strong>should not be modified</strong>.</li>
+<li><code>user_settings.toml</code>, that is were all user preferences (font size, monitor, terminal, browser) are saved. To manage this file see <code>gtheme config help</code></li>
+</ul>
+<blockquote>
+<p>To check more in depth the specification of the files that are stored in each of these folder go into their respective sections.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="theme-specification"><a class="header" href="#theme-specification">Theme specification</a></h1>
+<p>Example using <a href="https://github.com/daavidrgz/gtheme-themes/blob/main/themes/Dracula.toml">Dracula</a> theme.</p>
+<pre><code class="language-toml">name = 'Dracula'
+
+[extras]
+intellij-idea = ['Dracula Colorful']
+vscode = ['Dracula']
+wallpaper = ['~/.config/gtheme/wallpapers/Dracula/arch-linux-light.png']
+
+[colors]
+background = '1e1f28'
+black = '000000'
+black-hg = '545454'
+blue = 'bd92f8'
+blue-hg = 'bd92f8'
+cursor = 'bbbbbb'
+cyan = '8ae9fc'
+cyan-hg = '8ae9fc'
+foreground = 'f8f8f2'
+green = '50fa7b'
+green-hg = '50fa7b'
+magenta = 'ff78c5'
+magenta-hg = 'ff78c5'
+red = 'ff5555'
+red-hg = 'ff5454'
+selection-background = '44475a'
+selection-foreground = '1e1f28'
+white = 'bbbbbb'
+white-hg = 'ffffff'
+yellow = 'f0fa8b'
+yellow-hg = 'f0fa8b'
+</code></pre>
+<p>You can easily create a new theme skeleton running <code>gtheme theme new-skeleton &lt;THEME_NAME&gt;</code></p>
+<h2 id="extras"><a class="header" href="#extras">Extras</a></h2>
+<p>In the extras section, there are specified all the arguments that are necessary to apply the theme in other applications.</p>
+<p>The elements of the array will be passed to the extra's post-script in the same order. To see more information about this check out the <a href="folder_structure/file-specifications/postscript-specification.html">PostScript specification</a>.</p>
+<p>You can also add any application you want, but obviously implementing a script that handles those arguments. This script must be stored into the <code>extras/</code> folder of a desktop.</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>WARNING:</strong> The names of the extra's script and the application specified in the extras section of a theme must be the same!</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<h2 id="colors"><a class="header" href="#colors">Colors</a></h2>
+<p>In the theme specification, you must use <strong>valid hex colors only</strong>. It is important no not prefix the hex color with <code>#</code>.</p>
+<p>If the property is defined in the theme that you want to apply, you can reference it in the patterns. It means that you can create custom properties on theme's colors definition keep in mind that the rest of the themes should also need to have this custom property set in order to be consistent). We <strong>encourage to not use custom color properties</strong> on theme files, since we don't find this neccesary at all, and it will ruin the standarization we're trying to accomplish.</p>
+<p>However, if you need to use more than 16 colors in your theme, creating new color properties
+is the only way.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="desktop-specification"><a class="header" href="#desktop-specification">Desktop specification</a></h1>
+<p>As mentioned before, the desktop structure is the following:</p>
+<pre><code class="language-bash">❯ tree simple -L 1 -a
+simple
+├── desktop_config.json
+├── desktop_info.toml
+├── .config/
+└── gtheme/
+</code></pre>
+<p>You can easily create a new desktop skeleton running <code>gtheme desktop new-skeleton &lt;DESKTOP_NAME&gt;</code></p>
+<h2 id="gtheme-folder"><a class="header" href="#gtheme-folder">Gtheme folder</a></h2>
+<h3 id="extras-1"><a class="header" href="#extras-1">Extras</a></h3>
+<p>Here are located all extra scripts that are executed after applying a theme. See <a href="folder_structure/folder_structure/extra_especification.html">Extra Specification</a></p>
+<h3 id="patterns"><a class="header" href="#patterns">Patterns</a></h3>
+<p>Here are located all patterns. It is a complex file, see <a href="folder_structure/folder_structure/pattern-specification.html">Pattern Specification</a></p>
+<h3 id="post-scripts"><a class="header" href="#post-scripts">Post-Scripts</a></h3>
+<p>Here are stored all script that are executed after a pattern is filled. They can be used to force a reload to show the color change. See <a href="folder_structure/folder_structure/postscript_specification.html">PostScript Specification</a></p>
+<p><strong>PostScripts are optional</strong>, not all patterns need to have a PostScript associated.</p>
+<h2 id="config-folder"><a class="header" href="#config-folder">.config folder</a></h2>
+<p>Here are stored all desktop configuration files that goes under <code>$HOME/.config</code>. Some of them can have a pattern, so it is not needed to store patterns here, but is recommended to keep a filled pattern here, in case of something brokes, the system could be recovered easily by the user.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pattern-specification"><a class="header" href="#pattern-specification">Pattern specification</a></h1>
+<p>Patterns files must be located on <code>{/path/to/desktop}/gtheme/patterns</code> and there must not be more than one pattern with the same name.</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>WARNING:</strong> If patterns only differ on the extension, they have effectively the same name.</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Example using the <a href="https://github.com/daavidrgz/gtheme-desktops/blob/main/simple/gtheme/patterns/alacritty.pattern">Alacritty</a> config file:</p>
+<pre><code class="language-yml">&lt;[output-file]&gt;=~/.config/alacritty/alacritty.yml
+# &lt;[theme-name]&gt;
+
+font:
+  normal:
+    family: &lt;[default-font|DejaVuSansMono Nerd Font]&gt;
+  bold:
+    family: &lt;[default-font|DejaVuSansMono Nerd Font]&gt;
+  italic:
+    family: &lt;[default-font|DejaVuSansMono Nerd Font]&gt;
+  size: &lt;[default-font-size|12]&gt;
+
+colors:
+  cursor:
+    text: '0x&lt;[foreground]&gt;'
+    cursor: '0x&lt;[cursor]&gt;'
+  primary:
+    background: '0x&lt;[background]&gt;'
+    foreground: '0x&lt;[foreground]&gt;
+...
+</code></pre>
+<h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
+<p>All properties are accessed with the pattern <code>&lt;[some-property]&gt;</code>. Those properties will be replaced with the value of the associated key on a theme or the <code>user_settings</code> file.</p>
+<p>You can also <strong>specify a default value for some properties</strong> with <code>&lt;[some-property|default-value]&gt;</code>. This can be used to prevent crashes when that property is not present in the <code>user_settings</code> file.</p>
+<p>In addition, there are <strong>two special properties</strong>:</p>
+<ul>
+<li><code>&lt;[output-file]&gt;=/path/to/write</code>: This is a <strong>mandatory</strong> property that it's necessary in order to know where to place the filled pattern. It has to be in <strong>its own line, with nothing else</strong>.</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th><strong>INFO:</strong> As opposed to other properties, <code>output-file</code> will not be filled on the generated output and the line were it was located will be deleted.</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<ul>
+<li><code>&lt;[theme-name]&gt;</code>: Unlike the previous property, this one is <strong>optional.</strong> It simply uses the key <code>name</code> on the theme file to fill the property.</li>
+</ul>
+<h2 id="modules-and-sub-modules"><a class="header" href="#modules-and-sub-modules">Modules and sub-modules</a></h2>
+<p>If you have a program that is composed of <strong>several config files</strong>, you will also need <strong>several pattern files</strong>. To manage this situation, you can use the <strong>pattern modules.</strong></p>
+<p>Inside of <code>patterns/</code> folder, you can create <strong>another folder</strong> that:</p>
+<ul>
+<li>It's name will be the one of the module.</li>
+<li>It can contain any number of patterns (or patterns modules) inside that will be consider sub-modules.</li>
+<li>When filling a pattern module, all of its sub-modules will be filled too.</li>
+<li>Enabling or disabling a module, also enables or disables all of its sub-modules.</li>
+<li>Submodules can be a module itself. This means that submodules are recursive.</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th><strong>WARNING:</strong> Pattern sub-modules must follow the restrictions of regular pattern files.</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<h2 id="pattern-inversion"><a class="header" href="#pattern-inversion">Pattern inversion</a></h2>
+<p>Some themes could have a wallpaper with color tones that conflict with text foreground color and makes reading text harder. In order to fix that, you can <strong>invert a pattern</strong>. </p>
+<p>Inverting a pattern means that <code>foreground</code> color will be switched with <code>background</code> color, and the same happens with its <code>selection-</code> variants. </p>
+<p>Check <code>gtheme pattern invert --help</code>.</p>
+<h2 id="tips"><a class="header" href="#tips">Tips</a></h2>
+<p>If you're planning to create (or port existing dotfiles) patterns, we encourage you to check already existing patterns. You can found some on the <a href="folder_structure/git@github.com:daavidrgz/gtheme-desktops.git">community desktops repository</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="postscript-specification"><a class="header" href="#postscript-specification">PostScript specification</a></h1>
+<p><a href="https://github.com/daavidrgz/gtheme-desktops/blob/main/simple/gtheme/post-scripts/dunst.sh">Dunst extra example</a>:</p>
+<pre><code class="language-bash">#!/bin/bash
+
+pkill dunst &amp;&gt;/dev/null
+exit 0
+</code></pre>
+<p>PostScripts are scripts that are executed after a pattern is filled. Some applications don't support hot-reload, so them must have to be reloaded. PostScripts allow to automatize those reloads every time a theme is applied, so the user doesn't have to restart it manually.</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>WARNING:</strong> The names of the script files should match the pattern names.</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>They recive as first parameter the <strong><code>output-file</code> path specified in the pattern</strong>, but
+not all applications need this path in order to restart correctly.</p>
+<p>There is a <strong>special script</strong> called <code>desktop-exit.sh</code> that is executed every time you change from one desktop to another one. It let us be agnostic of the current Window Manager that is being used and feel a better experience when switching from one desktop to another.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="extra-specification"><a class="header" href="#extra-specification">Extra specification</a></h1>
+<p><a href="https://github.com/daavidrgz/gtheme-desktops/blob/main/simple/gtheme/extras/vscode.sh">VSCode extra example</a>:</p>
+<pre><code class="language-bash">#!/bin/bash
+
+VSCODETHEME=&quot;$1&quot;
+VSCODE_SETTINGS_FILE=&quot;$HOME/.config/Code/User/settings.json&quot;
+
+[[ ! -e $VSCODE_SETTINGS_FILE || -z &quot;$VSCODETHEME&quot; ]] &amp;&amp; exit 1
+
+sed -i &quot;s|\&quot;workbench.colorTheme\&quot;: \&quot;.*\&quot;|\&quot;workbench.colorTheme\&quot;: \&quot;$VSCODETHEME\&quot;|&quot; $VSCODE_SETTINGS_FILE
+</code></pre>
+<p>As we can see, we are executing the script using <code>bash</code>, but you can use any other scripting language.</p>
+<p>Another important thing resides the third line, where we are getting the VSCode theme name from the arguments passed to the script. That name is the one that is stored in the <em>extras</em> section of each color theme.</p>
+<p>Extras argument are specific of each theme, since it is the only way to have themes synchronized with another parts of our system. VScode is a good example, but a similar thing happens to the wallpaper. </p>
+<p>This issue is handled via <strong>extras</strong>. For example, if you have a postcript that changes <strong>vscode theme</strong> according to a <strong>gtheme theme</strong>, you should have a <code>extras/vscode.sh</code> script, that executes every time you apply a theme. That script can receive <strong>theme-specific arguments</strong>, and you can specify them on the <strong>extras section</strong> of theme files and the name of the extra script <strong>must match</strong> the one that appers in that file.</p>
+<p>Extras are managed on a similar way to postscripts. They are executed every time you apply a theme, and you can also enable/disable them.</p>
+<div class="table-wrapper"><table><thead><tr><th><strong>INFO:</strong> Dont forget to give extras execution permissions.</th></tr></thead><tbody>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="autocompletions"><a class="header" href="#autocompletions">Autocompletions</a></h1>
+<p>As a (kinda ugly) patch, in order to make the autocompletions update every time a desktop or a theme is added/removed, we are constantly regenerating them. This causes that we must have write access in the directory where we are saving those autocompletion scripts.</p>
+<p>The steps that you have to follow depend on the shell you are currently using.</p>
+<h3 id="zsh"><a class="header" href="#zsh">Zsh</a></h3>
+<p>If you are using <a href="https://www.zsh.org/">zsh</a>, you need to add the following line to your <code>.zshrc</code>:</p>
+<pre><code>fpath=(/home/{your-user}/.gtheme/completions $fpath)
+</code></pre>
+<p>Important: This line should be placed <strong>BEFORE</strong> the call to <code>compinit</code>, usually something like this:</p>
+<pre><code>autoload -Uz compinit &amp;&amp; compinit
+</code></pre>
+<p>If you don't have this line, add it <strong>AFTER</strong> the fpath export.</p>
+<h3 id="bash"><a class="header" href="#bash">Bash</a></h3>
+<p>If you are using <a href="https://www.gnu.org/software/bash/">bash</a>, you only need to add this to your <code>.bashrc</code>:</p>
+<pre><code class="language-bash">[ -r /home/{your-user}/.gtheme/completions/gtheme.bash ] &amp;&amp; source /home/{your-user}/.gtheme/completions/gtheme.bash
+</code></pre>
+<h3 id="fish"><a class="header" href="#fish">Fish</a></h3>
+<p>If you are using <a href="https://github.com/fish-shell/fish-shell">fish</a>, it already includes an user level write access directory to store the completion scripts, so you don't need to do anything.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>

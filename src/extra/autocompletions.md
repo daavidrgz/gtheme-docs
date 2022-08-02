@@ -4,7 +4,7 @@ As a (kinda ugly) patch, in order to make the autocompletions update every time 
 
 The steps that you have to follow depend on the shell you are currently using.
 
-### Zsh
+## Zsh
 
 If you are using [zsh](https://www.zsh.org/), you need to add the following line to your `.zshrc`:
 
@@ -20,7 +20,7 @@ autoload -Uz compinit && compinit
 
 If you don't have this line, add it **AFTER** the fpath export.
 
-### Bash
+## Bash
 
 If you are using [bash](https://www.gnu.org/software/bash/), you only need to add this to your `.bashrc`:
 
@@ -28,6 +28,6 @@ If you are using [bash](https://www.gnu.org/software/bash/), you only need to ad
 [ -r /home/{your-user}/.gtheme/completions/gtheme.bash ] && source /home/{your-user}/.gtheme/completions/gtheme.bash
 ```
 
-### Fish
+## Fish
 
 If you are using [fish](https://github.com/fish-shell/fish-shell), it already includes an user level write access directory to store the completion scripts, so you don't need to do anything.

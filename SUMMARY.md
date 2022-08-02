@@ -3,16 +3,16 @@
 ## Getting Started
 
 * [Getting started](README.md)
-* [General usage](General-usage.md)
-* [The folder structure](General-folder-structure.md)
+* [General usage](general-usage.md)
+* [The folder structure](general-folder-structure.md)
 
 ## File Specifications
 
-* [Theme specification](Theme-specification.md)
-* [Pattern specification](Pattern-specification.md)
-* [Desktop specification](Desktop-specification.md)
+* [Theme specification](theme-specification.md)
+* [Pattern specification](pattern-specification.md)
+* [Desktop specification](desktop-specification.md)
 * [PostScript specification](file-specifications/postscript-specification.md)
 
 ## Others
 
-* [Autocompletions](<README (1).md>)
+* [Autocompletions](autocompletions.md)

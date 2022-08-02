@@ -1,6 +1,6 @@
 # Autocompletions
 
-As an (ugly) patch, in order to make the autocompletions update every time a desktop or a theme is added/removed, we are constantly regenerating them. This causes that we must have write access in the directory where we are saving those autocompletion scripts.
+As a (kinda ugly) patch, in order to make the autocompletions update every time a desktop or a theme is added/removed, we are constantly regenerating them. This causes that we must have write access in the directory where we are saving those autocompletion scripts.
 
 The steps that you have to follow depend on the shell you are currently using.
 

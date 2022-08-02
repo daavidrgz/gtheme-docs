@@ -48,8 +48,6 @@ The names of the extra's script and the application specified in the extras sect
 
 ### Colors
 
-Hex colors only
+In the theme specification, you must use valid hex colors only. It is important no not prefix the hex color with `#`.
 
-Important to prescind of the '#'
-
-If the property is defined in the theme that you want to apply, you can reference it in the patterns. It means that you can create custom properties if you want (keep in mind that the rest of the themes should also need to have this custom property set in order to be consistent). We **encourage to not use custom color properties** on theme files, since we don't find this neccesary at all.
+If the property is defined in the theme that you want to apply, you can reference it in the patterns. It means that you can create custom properties if you want (keep in mind that the rest of the themes should also need to have this custom property set in order to be consistent). We **encourage to not use custom color properties** on theme files, since we don't find this neccesary at all, and it will ruin the standarization we're trying to accomplish.

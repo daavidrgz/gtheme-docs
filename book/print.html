@@ -387,7 +387,7 @@ sed -i &quot;s|\&quot;workbench.colorTheme\&quot;: \&quot;.*\&quot;|\&quot;workb
 <p>The steps that you have to follow depend on the shell you are currently using.</p>
 <h3 id="zsh"><a class="header" href="#zsh">Zsh</a></h3>
 <p>If you are using <a href="https://www.zsh.org/">zsh</a>, you need to add the following line to your <code>.zshrc</code>:</p>
-<pre><code>fpath=(/home/{your-user}/.gtheme/completions $fpath)
+<pre><code>fpath=($HOME/.gtheme/completions $fpath)
 </code></pre>
 <p>Important: This line should be placed <strong>BEFORE</strong> the call to <code>compinit</code>, usually something like this:</p>
 <pre><code>autoload -Uz compinit &amp;&amp; compinit

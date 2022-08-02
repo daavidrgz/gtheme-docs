@@ -9,7 +9,7 @@ The steps that you have to follow depend on the shell you are currently using.
 If you are using [zsh](https://www.zsh.org/), you need to add the following line to your `.zshrc`:
 
 ```
-fpath=(/home/{your-user}/.gtheme/completions $fpath)
+fpath=($HOME/.gtheme/completions $fpath)
 ```
 
 Important: This line should be placed **BEFORE** the call to `compinit`, usually something like this:

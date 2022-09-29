@@ -145,7 +145,7 @@
                         <h1 id="autocompletions"><a class="header" href="#autocompletions">Autocompletions</a></h1>
 <p>As a (kinda ugly) patch, in order to make the autocompletions update every time a desktop or a theme is added/removed, we are constantly regenerating them. This causes that we must have write access in the directory where we are saving those autocompletion scripts.</p>
 <p>The steps that you have to follow depend on the shell you are currently using.</p>
-<h3 id="zsh"><a class="header" href="#zsh">Zsh</a></h3>
+<h2 id="zsh"><a class="header" href="#zsh">Zsh</a></h2>
 <p>If you are using <a href="https://www.zsh.org/">zsh</a>, you need to add the following line to your <code>.zshrc</code>:</p>
 <pre><code>fpath=($HOME/.gtheme/completions $fpath)
 </code></pre>
@@ -153,11 +153,11 @@
 <pre><code>autoload -Uz compinit &amp;&amp; compinit
 </code></pre>
 <p>If you don't have this line, add it <strong>AFTER</strong> the fpath export.</p>
-<h3 id="bash"><a class="header" href="#bash">Bash</a></h3>
+<h2 id="bash"><a class="header" href="#bash">Bash</a></h2>
 <p>If you are using <a href="https://www.gnu.org/software/bash/">bash</a>, you only need to add this to your <code>.bashrc</code>:</p>
 <pre><code class="language-bash">[ -r /home/{your-user}/.gtheme/completions/gtheme.bash ] &amp;&amp; source /home/{your-user}/.gtheme/completions/gtheme.bash
 </code></pre>
-<h3 id="fish"><a class="header" href="#fish">Fish</a></h3>
+<h2 id="fish"><a class="header" href="#fish">Fish</a></h2>
 <p>If you are using <a href="https://github.com/fish-shell/fish-shell">fish</a>, it already includes an user level write access directory to store the completion scripts, so you don't need to do anything.</p>
 
                     </main>
